@@ -32,12 +32,16 @@ document.querySelector(".check").addEventListener("click", function () {
     //guess is wrong
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      displayMessage(guess > secretNumber ? "📈 Too high!" : "📉 Too low!");
+      displayMessage(
+        guess > secretNumber ? "🥵 too high mate!!" : "😰 too low mate!!"
+      );
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      displayMessage("💥 You lost the game!");
+      displayMessage("🔥 You lost the game!");
       document.querySelector(".score").textContent = 0;
+      document.querySelector("body").style.backgroundColor = "red";
+      document.querySelector("h1").textContent = "You loose baby !!!";
     }
   }
   // when guess wrong too high
