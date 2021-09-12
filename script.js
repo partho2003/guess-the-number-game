@@ -15,12 +15,11 @@ document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
   //When there is no input
   if (!guess) {
-    document.querySelector(".message").textContent = " 😭 oops!!! not a number";
+    displayMessage("😿 not a number!");
   }
   //When player wins
   else if (guess === secretNumber) {
-    document.querySelector(".message").textContent =
-      "  🤓 woohoo the correct one";
+    displayMessage("  🤓 woohoo the correct one");
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "green";
     document.querySelector(".number").style.width = "30rem";
@@ -50,7 +49,7 @@ document.querySelector(".check").addEventListener("click", function () {
 document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20 + 1);
-  document.querySelector(".message").textContent = "Start guessing...";
+  displayMessage("Start Guessing");
   document.querySelector(".score").textContent = score;
   document.querySelector(".number").textContent = "?";
   document.querySelector(".guess").value = "";
