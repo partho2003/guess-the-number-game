@@ -1,8 +1,15 @@
 "use strict";
-
+// console.log(document.querySelector('.message').textContent)
+// document.querySelector('.number').textContent = 13;
+// document.querySelector('.score').textContent = 20;
+// document.querySelector('.guess').value = 23;
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highScore = 0;
+
+const displayMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+};
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
@@ -23,30 +30,39 @@ document.querySelector(".check").addEventListener("click", function () {
       document.querySelector(".highscore").textContent = highScore;
     }
     //guess is wrong
-
-    // when guess wrong too high
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent = "  🥵 too high mate!!";
+      displayMessage(guess > secretNumber ? "📈 Too high!" : "📉 Too low!");
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      document.querySelector(".message").textContent = "🔥 you loose the game";
+      displayMessage("💥 You lost the game!");
       document.querySelector(".score").textContent = 0;
-      document.querySelector("body").style.backgroundColor = "red";
-    }
-    //when guess wrong too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "  😰 too low mate!!";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent = "🔥 You loose the game";
-      document.querySelector(".score").textContent = 0;
-      document.querySelector("body").style.backgroundColor = "red";
     }
   }
+  // when guess wrong too high
+  //   } else if (guess > secretNumber) {
+  //     if (score > 1) {
+  //       document.querySelector(".message").textContent = "  🥵 too high mate!!";
+  //       score--;
+  //       document.querySelector(".score").textContent = score;
+  //     } else {
+  //       document.querySelector(".message").textContent = "🔥 you loose the game";
+  //       document.querySelector(".score").textContent = 0;
+  //       document.querySelector("body").style.backgroundColor = "red";
+  //     }
+  //     //when guess wrong too low
+  //   } else if (guess < secretNumber) {
+  //     if (score > 1) {
+  //       document.querySelector(".message").textContent = "  😰 too low mate!!";
+  //       score--;
+  //       document.querySelector(".score").textContent = score;
+  //     } else {
+  //       document.querySelector(".message").textContent = "🔥 You loose the game";
+  //       document.querySelector(".score").textContent = 0;
+  //       document.querySelector("body").style.backgroundColor = "red";
+  //     }
+  //   }
 });
 
 // Working with again button
